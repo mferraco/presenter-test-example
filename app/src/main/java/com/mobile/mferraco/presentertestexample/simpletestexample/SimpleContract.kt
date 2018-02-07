@@ -1,9 +1,9 @@
-package com.mobile.mferraco.presentertestexample
+package com.mobile.mferraco.presentertestexample.simpletestexample
 
 /**
  * Defines the communication between the view and presenter for this component
  */
-interface SimpleTestExampleContract {
+interface SimpleContract {
 
     interface View {
 
@@ -20,10 +20,16 @@ interface SimpleTestExampleContract {
         fun setSubtitleText(subtitle: Int)
 
         /**
-         * Sets the view's background color
-         * @param color The color resource to use for the background color
+         * Updates the view after a successful response from the API
+         * @param text The text to update the view with
          */
-        fun setBackgroundColor(color: Int)
+        fun updateWithSuccess(text: String)
+
+        /**
+         * Updates the view after an error response from the API
+         * @param text The text to update the view with
+         */
+        fun updateWithError(text: String)
     }
 
     interface Presenter {
@@ -40,8 +46,8 @@ interface SimpleTestExampleContract {
         fun onCreate()
 
         /**
-         * Notifies the presenter that a specific button was clicked on the view
+         * Notifies the presenter that it should retrieve data from the API
          */
-        fun onButtonClick()
+        fun getData()
     }
 }
